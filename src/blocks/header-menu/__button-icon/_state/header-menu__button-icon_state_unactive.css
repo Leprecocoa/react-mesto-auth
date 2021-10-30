@@ -1,0 +1,21 @@
+.header-menu__button-icon_state_unactive {
+  position: relative;
+  background: #fff;
+}
+.header-menu__button-icon_state_unactive::before,
+.header-menu__button-icon_state_unactive::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 24px;
+  height: 3px;
+  background: #fff;
+}
+
+.header-menu__button-icon_state_unactive::before {
+  top: -9px;
+}
+
+.header-menu__button-icon_state_unactive::after {
+  bottom: -9px;
+}

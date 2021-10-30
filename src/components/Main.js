@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import Card from "./Card";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
-import Header from "./Header";
+import Card from "./Card";
 import Footer from "./Footer";
+import HeaderWithUserMenu from "./HeaderWithUserMenu";
 
 function Main(props) {
   const currentUser = useContext(CurrentUserContext);
@@ -10,7 +10,7 @@ function Main(props) {
   return (
     <>
       {/* Header */}
-      <Header />
+      <HeaderWithUserMenu />
       {/* Main content */}
       <main className="main">
         {/* Profile section */}

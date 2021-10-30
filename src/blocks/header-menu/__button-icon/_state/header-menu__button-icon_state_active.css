@@ -1,0 +1,23 @@
+.header-menu__button-icon_state_active {
+  position: relative;
+  background: transparent;
+}
+.header-menu__button-icon_state_active::before,
+.header-menu__button-icon_state_active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 24px;
+  height: 3px;
+  background: #fff;
+}
+
+.header-menu__button-icon_state_active::before {
+  top: 0px;
+  transform: rotate(45deg);
+}
+
+.header-menu__button-icon_state_active::after {
+  bottom: 0px;
+  transform: rotate(-45deg);
+}

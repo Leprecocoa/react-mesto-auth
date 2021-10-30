@@ -1,0 +1,4 @@
+.popup__register-image_status_unsucess {
+  background: url('../../../../images/register-unsuccess.svg') center / 120px
+    no-repeat;
+}

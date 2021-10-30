@@ -1,5 +1,11 @@
 import { useEffect, useState } from "react";
-import { BrowserRouter, Switch, Route, NavLink } from "react-router-dom";
+import {
+  BrowserRouter,
+  Switch,
+  Route,
+  NavLink,
+  Redirect,
+} from "react-router-dom";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import { api } from "../utils/api.js";
 import ImagePopup from "./ImagePopup";
@@ -11,6 +17,8 @@ import ProtectedRoute from "./ProtectedRoute";
 import Header from "./Header";
 import Main from "./Main";
 import Login from "./Login";
+import Register from "./Register";
+import InfoTooltip from "./InfoTooltip";
 
 function App() {
   const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = useState(false);
@@ -19,7 +27,7 @@ function App() {
   const [selectedCard, setSelectedCard] = useState(null);
   const [currentUser, setCurrentUser] = useState({});
   const [cards, setCards] = useState([]);
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(true);
 
   function handleEditAvatarClick() {
     setEditAvatarPopupOpen(true);
@@ -113,12 +121,22 @@ function App() {
           <div className="root">
             <div className="page">
               <Switch>
-                <Route path="/sign-up"></Route>
+                <Route path="/sign-up">
+                  <Header>
+                    <NavLink
+                      to="/sign-in"
+                      className="header-menu__link page__button"
+                    >
+                      Войти
+                    </NavLink>
+                  </Header>
+                  <Register />
+                </Route>
                 <Route path="/sign-in">
                   <Header>
                     <NavLink
                       to="/sign-up"
-                      className="header__link page__button"
+                      className="header-menu__link page__button"
                     >
                       Регистрация
                     </NavLink>
@@ -138,6 +156,9 @@ function App() {
                   onCardLike={handleCardLike}
                   onCardDelete={handleCardDelete}
                 />
+                <Route path="*">
+                  <Redirect to="sign-in" />
+                </Route>
               </Switch>
               {/* Popup profile */}
               <EditProfilePopup
@@ -165,6 +186,8 @@ function App() {
               ></PopupWithForm>
               {/* Image popup */}
               <ImagePopup card={selectedCard} onClose={closeAllPopups} />
+              {/* InfoTooltip popup */}
+              <InfoTooltip onClose={closeAllPopups} />
             </div>
           </div>
         </CurrentUserContext.Provider>
