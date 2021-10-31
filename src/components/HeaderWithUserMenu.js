@@ -8,12 +8,14 @@ function HeaderWithUserMenu(props) {
   return (
     <div className="header-menu">
       <div className="header-menu__user-nav header-menu__user-nav_type_mobile">
-        {showMenu ? <UserNav /> : null}
+        {showMenu ? (
+          <UserNav userData={props.userData} onLogout={props.onLogout} />
+        ) : null}
       </div>
       <Header>
         <div>
           <div className="header-menu__user-nav header-menu__user-nav_type_desktop">
-            <UserNav />
+            <UserNav userData={props.userData} onLogout={props.onLogout} />
           </div>
           <button className="header-menu__button" onClick={handleShowMenu}>
             <span

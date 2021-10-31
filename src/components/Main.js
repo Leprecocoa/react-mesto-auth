@@ -10,7 +10,7 @@ function Main(props) {
   return (
     <>
       {/* Header */}
-      <HeaderWithUserMenu />
+      <HeaderWithUserMenu userData={props.userData} onLogout={props.onLogout} />
       {/* Main content */}
       <main className="main">
         {/* Profile section */}
